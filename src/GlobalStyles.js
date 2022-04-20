@@ -8,13 +8,15 @@ export default createGlobalStyle`
  }
 
  :root {
-   --black:
+   --black: #232023;
+   --red: #b90e0a;
+   --violet: #719193;
+   --magenta: #a1045a;
  }
 
  body {
    font-family: 'Lucida Console', Courier, monospace;
    font-size: 1rem;
-   background: rgb(99,166,20);
    background: whitesmoke;
  }
 
