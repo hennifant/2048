@@ -141,5 +141,23 @@ const Tile = ({ value, id }) => {
   );
 };
 
-const TileContainer = styled.div``;
+const TileContainer = styled.div`
+  height: 100%;
+  width: 100%;
+  border-radius: 0.25rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: var(--font);
+  line-height: 0;
+  color: #ffd5e5;
+  font-weight: 600;
+  -webkit-touch-callout: none;
+  -ms-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -ms-touch-action: none;
+  touch-action: none;
+`;
 export default Tile;
