@@ -3,20 +3,30 @@ import { createGlobalStyle } from 'styled-components';
 export default createGlobalStyle`
  * {
     box-sizing: border-box;
-    padding: 0;
-    margin: 0;
+   
  }
 
  :root {
-   --black:
+   --black: #232023;
+   --red: #b90e0a;
+   --violet: #719193;
+   --magenta: #a1045a;
+	 --font: 10vmin;
  }
 
  body {
-   font-family: 'Lucida Console', Courier, monospace;
-   font-size: 1rem;
-   background: rgb(99,166,20);
-   background: whitesmoke;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
  }
+
+ code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
 
  .sr-only {
         position: absolute;
