@@ -1,7 +1,5 @@
-import React from 'react';
+import styled from 'styled-components';
 
-// "#FCBAD3","#827397", "#9799ba", "#feadb9", "#4D4C7D",
-// "#363062", "#FF96AD", "#f9e1e0", "#bc85a3", "#B6C9F0", "#FFE5E2",
 const zeroColor = '#bbada0';
 const colors = [
   '#776e65',
@@ -137,9 +135,11 @@ const Tile = ({ value, id }) => {
     (id % 4) + 1
   }`;
   return (
-    <div className={classname} id={id} style={getStyle(value)}>
+    <TileContainer className={classname} id={id} style={getStyle(value)}>
       {value ? value : null}
-    </div>
+    </TileContainer>
   );
 };
+
+const TileContainer = styled.div``;
 export default Tile;

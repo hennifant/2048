@@ -236,6 +236,15 @@ const ScoreContainer = styled.div`
   color: #ffd5e5;
   display: flex;
   justify-content: space-between;
+
+  div {
+    display: inline-block;
+  }
+
+  span {
+    font-size: 0.7em;
+    opacity: 0.7;
+  }
 `;
 
 const GameOver = styled.div`
