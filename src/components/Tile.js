@@ -34,89 +34,89 @@ const bgColor = [
 ];
 const styles = [
   {
-    val: 2,
+    value: 2,
     bgColor: bgColor[0 % bgColor.length],
     color: colors[0 % colors.length],
     fontSize: '2rem',
   },
   {
-    val: 4,
+    value: 4,
     bgColor: bgColor[1 % bgColor.length],
     color: colors[1 % colors.length],
     fontSize: '2rem',
   },
   {
-    val: 8,
+    value: 8,
     bgColor: bgColor[2 % bgColor.length],
     color: colors[2 % colors.length],
     fontSize: '2rem',
   },
   {
-    val: 16,
+    value: 16,
     bgColor: bgColor[3 % bgColor.length],
     color: colors[3 % colors.length],
     fontSize: '1.9rem',
   },
   {
-    val: 32,
+    value: 32,
     bgColor: bgColor[4 % bgColor.length],
     color: colors[4 % colors.length],
     fontSize: '1.9rem',
   },
   {
-    val: 64,
+    value: 64,
     bgColor: bgColor[5 % bgColor.length],
     color: colors[5 % colors.length],
     fontSize: '1.9rem',
   },
   {
-    val: 128,
+    value: 128,
     bgColor: bgColor[6 % bgColor.length],
     color: colors[6 % colors.length],
     fontSize: '1.7rem',
   },
   {
-    val: 256,
+    value: 256,
     bgColor: bgColor[7 % bgColor.length],
     color: colors[7 % colors.length],
     fontSize: '1.7rem',
   },
   {
-    val: 512,
+    value: 512,
     bgColor: bgColor[8 % bgColor.length],
     color: colors[8 % colors.length],
     fontSize: '1.7rem',
   },
   {
-    val: 1024,
+    value: 1024,
     bgColor: bgColor[9 % bgColor.length],
     color: colors[9 % colors.length],
     fontSize: '1.5rem',
   },
   {
-    val: 2048,
+    value: 2048,
     bgColor: bgColor[10 % bgColor.length],
     color: colors[10 % colors.length],
     fontSize: '1.5rem',
   },
   {
-    val: 4096,
+    value: 4096,
     bgColor: bgColor[11 % bgColor.length],
     color: colors[11 % colors.length],
     fontSize: '1.5rem',
   },
   {
-    val: 8192,
+    value: 8192,
     bgColor: bgColor[12 % bgColor.length],
     color: colors[12 % colors.length],
     fontSize: '1.5rem',
   },
 ];
 
-const Tile = ({ val, id }) => {
-  const getStyle = val => {
+const Tile = ({ value, id }) => {
+  const getStyle = value => {
     let ind;
-    if (val === 0) {
+    if (value === 0) {
       let style = {
         color: zeroColor,
         backgroundColor: zeroColor,
@@ -124,7 +124,7 @@ const Tile = ({ val, id }) => {
       };
       return style;
     } else {
-      ind = Math.floor(Math.log2(val)) % styles.length;
+      ind = Math.floor(Math.log2(value)) % styles.length;
     }
     let style = {
       color: styles[ind].color,
@@ -137,8 +137,8 @@ const Tile = ({ val, id }) => {
     (id % 4) + 1
   }`;
   return (
-    <div className={classname} id={id} style={getStyle(val)}>
-      {val ? val : null}
+    <div className={classname} id={id} style={getStyle(value)}>
+      {value ? value : null}
     </div>
   );
 };

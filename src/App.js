@@ -152,11 +152,11 @@ function App() {
     setScore(0);
     setIsGameOver(false);
   };
-  const handleSize = val => {
-    if (val === -1 && size > 3) {
-      setSize(size => size + val);
-    } else if (val === 1 && size < 20) {
-      setSize(size => size + val);
+  const handleSize = value => {
+    if (value === -1 && size > 3) {
+      setSize(size => size + value);
+    } else if (value === 1 && size < 20) {
+      setSize(size => size + value);
     }
   };
   return (
