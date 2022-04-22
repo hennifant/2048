@@ -46,7 +46,6 @@ function App() {
       let T = [];
       switch (event.dir) {
         case 'Up':
-          //left//compress//right
           T = rotateLeft(tiles, size);
           T = compress(T, setScore, size);
           T = rotateRight(T, size);
@@ -54,7 +53,6 @@ function App() {
           setTiles(T);
           break;
         case 'Down':
-          //right//compress//left
           T = rotateRight(tiles, size);
           T = compress(T, setScore, size);
           T = rotateLeft(T, size);
@@ -62,7 +60,6 @@ function App() {
           setTiles(T);
           break;
         case 'Right':
-          //right //right//compress//left //left
           T = rotateRight(tiles, size);
           T = rotateRight(T, size);
           T = compress(T, setScore, size);
@@ -72,7 +69,6 @@ function App() {
           setTiles(T);
           break;
         case 'Left':
-          //compress
           T = compress(tiles, setScore, size);
           T = addRandomTile(T);
           setTiles(T);
@@ -87,9 +83,116 @@ function App() {
     onSwiped: handleSwipe,
     preventDefaultTouchmoveEvent: true,
   });
+
+  useEffect(() => {
+    const vmin =
+      (Math.min(window.innerHeight, window.innerWidth) * 4 * 5) / 100 / size;
+    document.documentElement.style.setProperty('font-size', vmin + 'px');
+    setTiles(t => {
+      return addRandomTile(addRandomTile(new Array(size * size).fill(0)));
+    });
+  }, [size]);
+
+  useEffect(() => {
+    const handleKeyDown = e => {
+      if (checkGameOver(tiles, size)) {
+        setIsGameOver(true);
+      } else {
+        let T = [];
+        switch (e.keyCode) {
+          case 38:
+            T = rotateLeft(tiles, size);
+            T = compress(T, setScore, size);
+            T = rotateRight(T, size);
+            T = addRandomTile(T);
+            setTiles(T);
+            break;
+          case 40:
+            T = rotateRight(tiles, size);
+            T = compress(T, setScore, size);
+            T = rotateLeft(T, size);
+            T = addRandomTile(T);
+            setTiles(T);
+            break;
+          case 39:
+            T = rotateRight(tiles, size);
+            T = rotateRight(T, size);
+            T = compress(T, setScore, size);
+            T = rotateLeft(T, size);
+            T = rotateLeft(T, size);
+            T = addRandomTile(T);
+            setTiles(T);
+            break;
+          case 37:
+            T = compress(tiles, setScore, size);
+            T = addRandomTile(T);
+            setTiles(T);
+            break;
+          default:
+            break;
+        }
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [tiles, size]);
+
+  const handleReplay = () => {
+    setTiles(() => {
+      return addRandomTile(addRandomTile(new Array(size * size).fill(0)));
+    });
+    if (score > bestScore) {
+      setBestScore(score);
+      localStorage.setItem('8192BEST', score);
+    }
+    setScore(0);
+    setIsGameOver(false);
+  };
+  const handleSize = val => {
+    if (val === -1 && size > 3) {
+      setSize(size => size + val);
+    } else if (val === 1 && size < 20) {
+      setSize(size => size + val);
+    }
+  };
   return (
-    <AppContainer>
+    <AppContainer {...handlers}>
+      <ButtonWrapper>
+        <AddButton
+          onClick={event => {
+            event.preventDefault();
+            handleSize(-1);
+          }}
+        >
+          -
+        </AddButton>
+        <div className="sizeDiv">{size}</div>
+        <RemoveButton
+          className="add btn"
+          onClick={event => {
+            event.preventDefault();
+            handleSize(1);
+          }}
+        >
+          +
+        </RemoveButton>
+      </ButtonWrapper>
       <TileGrid tiles={tiles} size={size} />
+      <ScoreContainer>
+        <div>
+          <span className="small">Score: </span>
+          {score}
+        </div>
+        <div>
+          <span className="small">Best: </span>
+          {bestScore}
+        </div>
+      </ScoreContainer>
+      {isGameOver && <GameOver onClick={handleReplay}>GAME OVER</GameOver>}
     </AppContainer>
   );
 }
@@ -106,4 +209,44 @@ const AppContainer = styled.div`
   gap: 0.2rem;
   font-family: 'Poppins', sans-serif;
   position: relative;
+`;
+
+const ButtonWrapper = styled.div`
+  padding: 0.05rem 0rem;
+  width: 75vmin;
+  font-size: 30px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.2rem;
+`;
+
+const AddButton = styled.button``;
+
+const RemoveButton = styled.button``;
+
+const ScoreContainer = styled.div`
+  padding: 0.05rem 0.6rem;
+  width: 75vmin;
+  font-size: 30px;
+  border-radius: 0.5rem;
+  background-color: #8f7a66;
+  font-weight: 600;
+  color: #ffd5e5;
+  display: flex;
+  justify-content: space-between;
+`;
+
+const GameOver = styled.div`
+  position: absolute;
+  padding: 1rem 1.5rem;
+  font-size: 1.8rem;
+  border-radius: 0.25rem;
+  background-color: #8f7a66;
+  font-weight: 600;
+  color: #ffd5e5;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 `;
