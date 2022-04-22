@@ -1,5 +1,8 @@
 import { useState, useEffect } from 'react';
 import { useSwipeable } from 'react-swipeable';
+import styled from 'styled-components';
+import addRandomTile from './components/RandomTile.js';
+import checkGameOver from './components/GameOver.js';
 
 import TileGrid from './components/TileGrid.js';
 
@@ -26,11 +29,27 @@ const rotateRight = (tiles, size) => {
 };
 
 function App() {
+  const [size, setSize] = useState(4);
+  const [tiles, setTiles] = useState(() => {
+    return addRandomTile(addRandomTile(new Array(size * size).fill(0)));
+  });
   return (
-    <div className="App">
+    <AppContainer>
       <TileGrid tiles={tiles} size={size} />
-    </div>
+    </AppContainer>
   );
 }
 
 export default App;
+
+const AppContainer = styled.div`
+  text-align: center;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.2rem;
+  font-family: 'Poppins', sans-serif;
+  position: relative;
+`;
