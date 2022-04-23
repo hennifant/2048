@@ -7,7 +7,7 @@ export default createGlobalStyle`
  }
 
  :root {
-   --black: #232023;
+   --black: #0e0e10;
    --red: #b90e0a;
    --violet: #719193;
    --magenta: #a1045a;

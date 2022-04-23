@@ -1,4 +1,4 @@
-## Clone of 2048 Game
+## Clone of 8192 Game
 
 Under construction
 

@@ -19,7 +19,7 @@ const TileGrid = ({ tiles, size }) => {
 const TileGridContainer = styled.div`
   width: 75vmin;
   height: 75vmin;
-  background-color: #776e65;
+  background-color: #0e0e10;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: repeat(4, 1fr);

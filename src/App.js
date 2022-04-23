@@ -231,9 +231,9 @@ const ScoreContainer = styled.div`
   width: 75vmin;
   font-size: 30px;
   border-radius: 0.5rem;
-  background-color: #8f7a66;
+  background-color: #0e0e10;
   font-weight: 600;
-  color: #ffd5e5;
+  color: whitesmoke;
   display: flex;
   justify-content: space-between;
 
