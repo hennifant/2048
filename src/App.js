@@ -222,9 +222,33 @@ const ButtonWrapper = styled.div`
   gap: 0.2rem;
 `;
 
-const AddButton = styled.button``;
+const AddButton = styled.button`
+  border-radius: 0.25rem;
+  background-color: #0e0e10;
+  color: whitesmoke;
+  outline: none;
+  font-size: 1.5rem;
+  border: none;
+  height: 1.5rem;
+  width: 1.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
 
-const RemoveButton = styled.button``;
+const RemoveButton = styled.button`
+  border-radius: 0.25rem;
+  background-color: #0e0e10;
+  color: whitesmoke;
+  outline: none;
+  font-size: 1.5rem;
+  border: none;
+  height: 1.5rem;
+  width: 1.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
 
 const ScoreContainer = styled.div`
   padding: 0.05rem 0.6rem;
